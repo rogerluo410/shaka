@@ -1,14 +1,10 @@
 <template>
   <div>
-    <p class="title" style="font-size: 20px">test clue</p>
+    <p class="title" style="font-size: 20px">test trick</p>
     <p class="title" style="font-size: 20px">commit 1</p>
     <p class="title" style="font-size: 20px">commit 2</p>
     <p class="title" style="font-size: 20px">commit 3</p>
     <p class="title" style="font-size: 20px">commit 4</p>
-
-    <p>
-      <a href="/tricks">Go tricks</a>
-    </p>
   </div>
 </template>
 
@@ -18,6 +14,6 @@ export default {};
 
 <style scoped lang="scss">
 .title {
-  color: red !important;
+  color: yellow !important;
 }
 </style>

@@ -30,16 +30,45 @@
         </template>
       </draggable>
     </div>
+
+    <div class="m_panel11_header flex-y">
+      <validation-provider
+        v-slot="{ errors }"
+        rules="required|max:255|first_deny:*,Q|string_deny:[,]|comma_deny"
+      >
+        <dl
+          class="m_formSet2 m_formSet2__type4"
+          :class="errors.length > 0 ? 'is_error' : ''"
+        >
+          <dt>項目名</dt>
+          <dd>
+            <input
+              v-model="text"
+              class="m_formItemMedium"
+              type="text"
+              name="項目名"
+            />
+            <p v-show="errors.length > 0" class="m_form_error">
+              {{ errors[0] }}
+            </p>
+          </dd>
+        </dl>
+      </validation-provider>
+    </div>
+    <a class="m_btn2 m_btn2__block2 m_btn2__large" @click="update()"> 追加 </a>
   </div>
 </template>
 
 <script>
 import draggable from "vuedraggable";
 draggable.compatConfig = { MODE: 3 };
+import { ValidationProvider, ValidationObserver, validate } from "vee-validate";
 
 export default {
   components: {
     draggable,
+    ValidationProvider,
+    ValidationObserver,
   },
   data() {
     return {
@@ -50,6 +79,8 @@ export default {
         { name: "Jean", id: 2 },
       ],
       dragging: false,
+      observerId: "edit_textbox_observer",
+      text: "32321",
     };
   },
   computed: {
@@ -57,9 +88,46 @@ export default {
       return this.dragging ? "under drag" : "";
     },
   },
+  watch: {
+    text(val) {
+      console.log(val);
+      this.$emit("input", val);
+    },
+  },
   methods: {
     checkMove: function (e) {
       window.console.log("Future index: " + e.draggedContext.futureIndex);
+    },
+    async update() {
+      // バリデーションチェック
+      // this.$refs[this.observerId].validate().then((isValid) => {
+      //   if (!isValid) return;
+
+      //   alert("valid");
+      // });
+      // validate(
+      //   this.text,
+      //   "required|max:255|first_deny:*,Q|string_deny:[,]|comma_deny"
+      // ).then((result) => {
+      //   console.log(result);
+      //   if (result.valid) {
+      //     // Do something!
+      //     alert("valid!");
+      //   } else {
+      //     alert("invalid!");
+      //   }
+      // });
+      const result = await validate(
+        this.text,
+        "required|max:255|first_deny:*,Q|string_deny:[,]|comma_deny"
+      );
+      console.log(result);
+      if (result.valid) {
+        // Do something!
+        alert("valid!");
+      } else {
+        alert("invalid!");
+      }
     },
   },
 };
@@ -80,5 +148,9 @@ export default {
 
 .not-draggable {
   cursor: no-drop;
+}
+
+.is_error {
+  color: red !important;
 }
 </style>

@@ -59,7 +59,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import draggable from "vuedraggable";
 draggable.compatConfig = { MODE: 3 };
 import { ValidationProvider, ValidationObserver, validate } from "vee-validate";
@@ -91,6 +91,9 @@ export default {
   watch: {
     text(val) {
       console.log(val);
+      let x: string = true;
+      let y: string = true;
+      let z: string = true;
       this.$emit("input", val);
     },
   },

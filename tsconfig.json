@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    // "noEmit": true,            // "noEmit": true表示不生成输出文件，只进行类型检查
+    "target": "esnext",        // 编译后的目标版本
+    "module": "esnext",        // 使用 ES 模块
+    "moduleResolution": "node", // 模块解析方式
+    "strict": true,            // 启用严格模式
+    "esModuleInterop": true,   // 允许默认导入非 ES 模块
+    "skipLibCheck": true,      // 跳过库文件检查
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",        // 输出目录
+    "sourceMap": true          // 生成 source map 文件
+  },
+  "include": [
+    "app/**/*.ts", // 包括所有 .ts 文件
+    "app/**/*.d.ts", // 包括所有类型声明文件
+    "app/**/*.tsx", // 如果你使用 TSX，这里也可以包含
+    "app/**/*.vue"  // 包括 .vue 文件
+  ],
+  "exclude": ["node_modules"] // 排除 node_modules
+}

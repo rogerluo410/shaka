@@ -3,9 +3,12 @@
   "name": "app",
   "private": true,
   "version": "0.1.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
   "babel": {
     "presets": [
-      "./node_modules/shakapacker/package/babel/preset.js"
+      "./babel.config.js"
     ]
   },
   "browserslist": [
@@ -40,7 +43,13 @@
     "webpack-merge": "^5.10.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/node": "^22.10.1",
+    "@types/webpack-env": "^1.18.5",
     "@vue/compiler-sfc": "^3.5.12",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
     "webpack-dev-server": "^4.15.2"
   }
 }

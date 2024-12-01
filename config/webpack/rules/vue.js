@@ -15,12 +15,27 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.ts$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+          transpileOnly: false,
+          onlyCompileBundledFiles: true,
+        },
+      },
     ],
   },
   resolve: {
     alias: {
       vue: "@vue/compat",
     },
-    extensions: [".vue"],
+    extensions: [".js", ".ts", ".tsx", ".vue"],
   },
 };

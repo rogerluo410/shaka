@@ -56,6 +56,9 @@
       </validation-provider>
     </div>
     <a class="m_btn2 m_btn2__block2 m_btn2__large" @click="update()"> 追加 </a>
+    <Splide :options="slideOption">
+      <div>1234556</div>
+    </Splide>
   </div>
 </template>
 
@@ -63,6 +66,9 @@
 import draggable from "vuedraggable";
 draggable.compatConfig = { MODE: 3 };
 import { ValidationProvider, ValidationObserver, validate } from "vee-validate";
+import { ref, reactive, onMounted, getCurrentInstance } from "vue";
+import { Splide } from "@splidejs/vue-splide";
+import "@splidejs/vue-splide/css";
 
 export default {
   components: {
@@ -72,6 +78,14 @@ export default {
   },
   data() {
     return {
+      slideOption: {
+        rewind: false,
+        drag: false,
+        perPage: 3,
+        perMove: 1,
+        arrows: false,
+        pagination: false,
+      },
       enabled: true,
       list: [
         { name: "John", id: 0 },

@@ -15,7 +15,8 @@
     "app/**/*.ts", // 包括所有 .ts 文件
     "app/**/*.d.ts", // 包括所有类型声明文件
     "app/**/*.tsx", // 如果你使用 TSX，这里也可以包含
-    "app/**/*.vue"  // 包括 .vue 文件
+    "app/**/*.vue",  // 包括 .vue 文件
+    "./shims-vue.d.ts",
   ],
   "exclude": ["node_modules"] // 排除 node_modules
 }
